@@ -28,6 +28,9 @@ public class IsSymmetric {
     //用非递归的方式进行
     public boolean check1(TreeNode u, TreeNode v) {
         Queue<TreeNode> q = new LinkedList<TreeNode>();
+        //offer与add区别？都是插入队尾，队列满时，offer直接返回false，add返回异常。
+        //获取删除队首：为空 remove()返回异常	poll()返回null
+        //查询队首但不移除：为空element返回异常 peek()返回null
         q.offer(u);
         q.offer(v);
         while (!q.isEmpty()) {
