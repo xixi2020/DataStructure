@@ -1,4 +1,4 @@
-package dataStructure.linkedList;
+package dataStructure.linkedList.twoPoint;
 
 /**
  * 定义公共的链表节点方便测试

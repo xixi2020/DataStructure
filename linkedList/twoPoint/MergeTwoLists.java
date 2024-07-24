@@ -1,4 +1,4 @@
-package dataStructure.linkedList;
+package dataStructure.linkedList.twoPoint;
 
 /**
  *
