@@ -19,21 +19,25 @@ package dataStructure.linkedList;
 public class RemoveNthFromEnd {
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode newHead = new ListNode(-1);
+        newHead.next = head;
 
+        //这里必须要指向虚拟节点，因为要考虑到删除的是头结点的情况
         ListNode p = head;
         ListNode p1 = head;
         //先走k+1步
-        for (int i = 0; i < n + 1; i++) {
+        for (int i = 0; i < n ; i++) {
             p = p.next;
         }
-        //p和P1同时走,这时候p1刚好走到倒数第k+1个节点,也就是要删的值的前一个节点
-        while (p != null) {
+        //p和P1同时走,这时候由于是走到k签名的一个节点，所以不能到最后一个
+        while (p.next != null) {
             p = p.next;
             p1 = p1.next;
         }
+        //删除节点
         p1.next = p1.next.next;
 
-        return head;
+        return newHead.next;
     }
 
 }
