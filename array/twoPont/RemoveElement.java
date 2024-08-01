@@ -1,5 +1,7 @@
 package dataStructure.array.twoPont;
 
+import java.util.Arrays;
+
 /**
  * 27. 移除元素
 
@@ -17,6 +19,12 @@ package dataStructure.array.twoPont;
  * 你在返回的 k 个元素之外留下了什么并不重要（因此它们并不计入评测）。
  */
 public class RemoveElement {
+    public static void main(String[] args) {
+        int[] nums  = {0,1,0,3,12};
+        RemoveElement removeElement = new RemoveElement();
+        int i = removeElement.removeElement(nums, 0);
+        System.out.println( i+" "+Arrays.toString(nums));
+    }
     public int removeElement(int[] nums, int val) {
         //依旧使用双指针
         int slow = 0,fast = 0;

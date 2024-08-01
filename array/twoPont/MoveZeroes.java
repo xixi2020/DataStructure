@@ -18,9 +18,10 @@ import java.util.Arrays;
  */
 public class MoveZeroes {
     public static void main(String[] args) {
-        int[] nums  = {1,3,12,0,12};
+        int[] nums  = {0,1,0,3,12};
         MoveZeroes moveZeroes = new MoveZeroes();
         moveZeroes.moveZeroes(nums);
+        System.out.println(Arrays.toString(nums));
     }
     public void moveZeroes(int[] nums) {
         //使用双指针进行解决
@@ -33,8 +34,10 @@ public class MoveZeroes {
             }
             fast ++;
         }
-        for (int i = slow - 1; i < nums.length; i++) {
-            nums[slow] = 0;
+        for (int i = slow ; i < nums.length ; i++) {
+            //服了这里写成slow了，脑子短路了
+            nums[i] = 0;
+
         }
 
 
