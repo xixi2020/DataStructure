@@ -11,10 +11,15 @@ public class Test {
             TreeNode treeNode3 = new TreeNode(3,null,null);
             TreeNode treeNode4 = new TreeNode(4,null,null);
             treeNode3.right = treeNode4;
-            LowestCommonAncestor lowestCommonAncestor = new LowestCommonAncestor();
+            //最近公共祖先
+            //LowestCommonAncestor lowestCommonAncestor = new LowestCommonAncestor();
+            //中序遍历
+            InorderTraversal inorderTraversal = new InorderTraversal();
+
             treeNode1.right = treeNode3;
             treeNode1.left = treeNode2;
-            System.out.println(lowestCommonAncestor.lowestCommonAncestor(treeNode1,treeNode2,treeNode4).toString());
+            System.out.println(inorderTraversal.inorderTraversal(treeNode1).toString());
+
         }
 
 }
