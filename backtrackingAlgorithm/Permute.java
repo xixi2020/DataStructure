@@ -17,6 +17,7 @@ import java.util.List;
 public class Permute {
     //接收排列组合
     List<List<Integer>> res = new LinkedList<>();
+
     public List<List<Integer>> permute(int[] nums) {
         //记录路径的集合
         LinkedList<Integer> path = new LinkedList<>();
