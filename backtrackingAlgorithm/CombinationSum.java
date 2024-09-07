@@ -58,12 +58,13 @@ public class CombinationSum {
             return;
         }
         //回溯遍历
-        for (int i = 0; i <candidates.length; i++) {
+        for (int i = start; i <candidates.length; i++) {
             //注意这里反而要剪枝
             track.add(candidates[i]);
             trackSum += candidates[i];
-            backtrack(candidates, i + 1, target);
-            //撤销足迹进行下一次遍历
+            //这里由于可无限重复使用，所以不用加1
+            backtrack(candidates, i, target);
+            //撤销足迹进行下一次遍历.只要有base条件即可
             track.removeLast();
             trackSum -= candidates[i];
         }
