@@ -1,4 +1,4 @@
-package dataStructure.array.twoPont;
+package dataStructure.array.twoPoint;
 
 import java.util.Arrays;
 

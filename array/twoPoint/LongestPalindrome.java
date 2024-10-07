@@ -1,4 +1,4 @@
-package dataStructure.array.twoPont;
+package dataStructure.array.twoPoint;
 
 /**
  * 5. 最长回文子串

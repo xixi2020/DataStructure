@@ -1,4 +1,4 @@
-package dataStructure.array.twoPont;
+package dataStructure.array.twoPoint;
 
 /**80. 删除有序数组中的重复项 II
  中等

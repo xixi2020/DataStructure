@@ -1,4 +1,4 @@
-package dataStructure.array.twoPont;
+package dataStructure.array.twoPoint;
 
 /**
  344. 反转字符串
