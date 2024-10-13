@@ -29,7 +29,7 @@ public class Trap {
                 rightMax = Math.max(rightMax, height[j]);
             }
             //找左边最高点
-            for (int j = i; j >= 0; j --) {
+            for (int j = i; j >= 0; j--) {
                 leftMax = Math.max(leftMax, height[j]);
             }
             //自己就是最高点
@@ -56,7 +56,7 @@ public class Trap {
             leftMax[i] = Math.max(height[i] , leftMax[i - 1]);
         }
         //记录rightMax
-        for (int i = n - 2; i >= 0; i --) {
+        for (int i = n - 2; i >= 0; i--) {
             rightMax[i] = Math.max(height[i] , rightMax[i + 1]);
         }
         //计算height[i]的最大值
@@ -64,6 +64,27 @@ public class Trap {
             res = res + Math.min(rightMax[i], leftMax[i]) - height[i];
         }
         return res;
+    }
 
+    //双指针解法：较为复杂
+    public int trap3(int[] height) {
+        int left = 0, right = height.length - 1;
+        //记录指针所指范围内的最大值
+        int leftMax = 0, rightMax = 0;
+        int res = 0;
+
+        while(left < right){
+            leftMax = Math.max(leftMax, height[left]);
+            rightMax = Math.max(rightMax, height[right]);
+            //只关注比较低的一方，可以理解为两边同时找最高点
+            if(leftMax < rightMax) {
+                res = res + leftMax - height[left];
+                left ++;
+            }else {
+                res = res + rightMax - height[right];
+                right --;
+            }
+        }
+        return res;
     }
 }
