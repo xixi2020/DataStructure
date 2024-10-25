@@ -1,4 +1,4 @@
-package dataStructure.array;
+package dataStructure.array.maxProfit;
 
 /**
  *121. 买卖股票的最佳时机
@@ -21,7 +21,7 @@ package dataStructure.array;
  *
  */
 public class MaxProfit {
-    //用动态规划的方法进行解答
+    //用动态规划的方法进行解答：不计较k的情况，也就是没有交易限制
     public int maxProfit(int[] prices) {
         int n = prices.length;
         //int[..][0]/[1] 0，1 分别代表是否持有股票
@@ -32,17 +32,36 @@ public class MaxProfit {
             if (i - 1 == -1 ){
                 //还没有开始持股
                 dp[i][0] = 0;
-                //买了股票但是无法交易了
+                //还没开始的时候，是不可能持有股票的，我们的算法要求一个最大值，所以初始值设为一个最小值，方便取最大值。
                 dp[i][1] = -prices[i];
                 continue;
             }
-            //今天没有买：前一天买了，和前一天没有买
-            dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][0] - prices[i]);
-            //今天买了
+            //没有持有股票：昨天没有持有，昨天持有
+            dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+            //持有股票：昨天持有，昨天没有持有（今天买了）
             dp[i][1] = Math.max(dp[i - 1][1], - prices[i]);
 
         }
+        //最后卖掉
         return dp[n - 1][0];
     }
+
+    //优化：空间复杂度优化 数组换成单一的变量
+    public int maxProfit2(int[] prices) {
+        int n = prices.length;
+        //int[..][0]/[1] 0，1 分别代表是否持有股票
+        //状态方程 base base 还没开始的时候利润为0，也不可能持有股票
+        int dp_i_0 = 0, dp_i_1 = Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            //没有持有股票：昨天没有持有，昨天持有
+            dp_i_0 = Math.max(dp_i_0, dp_i_1+ prices[i]);
+            //持有股票：昨天持有，昨天没有持有（今天买了）
+            dp_i_1 = Math.max(dp_i_1, - prices[i]);
+
+        }
+        return  dp_i_0;
+    }
+
+
 
 }
