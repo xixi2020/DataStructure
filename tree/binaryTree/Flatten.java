@@ -40,7 +40,8 @@ public class Flatten {
         //将右子树拼接到后面
         //临时节点
         TreeNode temp = root;
-        if (temp.right != null){
+        //遍历到原来左子树链表的最后一个结点
+        while(temp.right != null){
             temp = temp.right;
         }
         temp.right = right;
