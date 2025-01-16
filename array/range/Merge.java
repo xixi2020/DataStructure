@@ -20,7 +20,11 @@ import java.util.Comparator;
  */
 public class Merge {
     public static void main(String[] args) {
-        int[][] ints = {{1,3},{2,6},{8,10},{15,18}};
+        int[][] ints = new int[2][3];
+        ints = new int[][]{{1, 3, 4}, {2, 3, 4}};
+        System.out.println(ints.length);
+        System.out.println(ints[1].length);
+
         Merge merge = new Merge();
         int[][] merge1 = merge.merge(ints);
         for (int i = 0; i < merge1.length; i++) {
