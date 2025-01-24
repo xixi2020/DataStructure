@@ -5,8 +5,6 @@ import java.util.HashMap;
  * 3. 无重复字符的最长子串
  *  已解答
  *  中等
- *  相关标签
- *  相关企业
  *  给定一个字符串 s ，请你找出其中不含有重复字符的 最长
  *  子串
  *  的长度。
@@ -65,7 +63,7 @@ public class LengthOfLongestSubstring {
                 //判断最右边的字符是否存在
                 char c = s.charAt(right);
                 right++;
-                map.put(c,map.getOrDefault(c,0)+1);
+                map.put(c,map.getOrDefault(c,0) + 1);
                 //出现重复字符
                 while(map.get(c) > 1){
                     //将最左边的移出去
