@@ -1,5 +1,8 @@
 package dataStructure.linkedList;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+
 /**
  * 146. LRU 缓存
  * 中等
@@ -39,4 +42,74 @@ package dataStructure.linkedList;
  * 最多调用 2 * 105 次 get 和 put
  */
 public class LRUCache {
+    //使用hash表和双向链表来实现
+    private final HashMap<Integer, Node> map;
+    private final LinkedList<Node> link;
+    //这里还要设置一个最大容量
+    private int capacity;
+
+    public LRUCache(int capacity) {
+        this.map = new HashMap<>();
+        //注意这里直接创建对象
+        this.link = new LinkedList<>();
+        this.capacity = capacity;
+    }
+
+    public int get(int key) {
+        //如果没有这个值
+        if(!map.containsKey(key)){
+            return -1;
+        }
+        //获取当前值
+        Node node = map.get(key);
+        int value = node.value;
+        //进行操作。最近使用过的放在链表头
+
+        //先删除
+        link.remove(node);
+        //移到链表头
+        link.addFirst(node);
+
+        return value;
+
+
+    }
+
+    //更新或者插入
+    public void put(int key, int value) {
+        //如果存在就进行更新，并且放在第一位
+        if (map.containsKey(key)){
+            Node node = map.get(key);
+            link.remove(node);
+            //更新
+            node.value = node.value;
+            //添加到头部
+            link.addFirst(node);
+        }else {
+            //如果不存在，需要判断是否超出容量
+            if (link.size() == capacity){
+                //删除队尾元素,注意这里返回了当前node
+                Node node = link.removeLast();
+                //删除map中的映射
+                map.remove(node.key);
+            }
+            //创建新节点并且添加
+            Node newNode = new Node(key, value);
+            link.addFirst(newNode);
+            map.put(key, newNode);
+
+        }
+
+    }
+
+    //内部类，双向链表的节点
+    class Node{
+        int key;
+        int value;
+
+        public Node(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
 }
