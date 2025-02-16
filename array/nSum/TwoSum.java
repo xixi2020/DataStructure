@@ -1,4 +1,4 @@
-package dataStructure.array;
+package dataStructure.array.nSum;
 
 import java.util.HashMap;
 
